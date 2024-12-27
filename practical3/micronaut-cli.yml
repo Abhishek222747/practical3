@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: com.abhishek.practical
+testFramework: junit
+sourceLanguage: java
+buildTool: maven
+features: [app-name, data, data-jpa, h2, http-client-test, java, java-application, jdbc-hikari, junit, logback, lombok, maven, maven-enforcer-plugin, micronaut-aot, micronaut-http-validation, netty-server, openapi, readme, serialization-jackson, shade, static-resources, swagger-ui, yaml, yaml-build]

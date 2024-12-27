@@ -1,0 +1,94 @@
+micronaut:
+  application:
+    name: practical3
+  server:
+    port: 8086
+  security:
+    enabled: true
+    basic-auth:
+      enabled: true
+    authentication:
+      enabled: true
+    endpoints:
+      login:
+        enabled: true
+users:
+  - username: admin
+    password: admin123
+    roles:
+      - ROLE_ADMIN
+  - username: user
+    password: user123
+    roles:
+      - ROLE_USER
+#security:
+#  enabled: true
+#  Intercept-url-map:
+#    - pattern : /swagger/**
+#      access: isAnonymous()
+#    - pattern: /swagger-ui/**
+#      access: isAnonymous()
+#  security:
+#    enabled: true
+#    basic-auth:
+#      enabled: true
+#    authentication:
+#      users:
+#        name: admin
+#        password: password123
+#        roles: [ADMIN]
+
+router:
+  static-resources:
+    swagger:
+      paths: classpath:META-INF/swagger
+      mapping: /swagger/**
+    swagger-ui:
+      paths: classpath:META-INF/swagger/views/swagger-ui
+      mapping: /swagger-ui/**
+
+datasources:
+  default:
+    url: jdbc:h2:mem:employees_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: ''
+    driver-class-name: org.h2.Driver
+    dialect: H2
+    schema-generate: CREATE_DROP
+
+logging:
+  level:
+    root: INFO
+
+jpa:
+   default:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+
+environments:
+  dev:
+    server:
+      port: 8081
+    datasource:
+      url: dev_url
+      username: dev_user
+      password: dev_password
+
+  perf:
+    server:
+      port: 8082
+    datasource:
+      url: perf_url
+      username: perf_user
+      password: perf_password
+
+  prod:
+    server:
+      port: 8083
+    datasource:
+      url: prod_url
+      username: prod_user
+      password: prod_password
+
